@@ -1,6 +1,7 @@
 import Quickshell
 import Quickshell.Hyprland
 import QtQuick
+import QtQuick.Layouts
 
 import "Widgets"
 
@@ -22,10 +23,22 @@ Variants {
         implicitHeight: 36
         color: "#1e1e2e"
 
-        Workspaces {}
+        RowLayout {
+            anchors.fill: parent
+            anchors.leftMargin: 8
+            anchors.rightMargin: 8
+            spacing: 8
 
-        Clock {
-            anchors.centerIn: parent
+            Workspaces {}
+
+            Clock {
+                anchors.centerIn: parent
+            }
+            Item {
+                Layout.fillWidth: true
+            }
+
+            Battery {}
         }
 
         //     Unlock {

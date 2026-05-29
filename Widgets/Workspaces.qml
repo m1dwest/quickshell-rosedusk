@@ -15,7 +15,7 @@ Rectangle {
     readonly property color textColor: "#f5e8eb"
 
     implicitWidth: row.implicitWidth + 12
-    implicitHeight: 30
+    implicitHeight: 32
 
     radius: 10
     color: "#332b30"
@@ -38,8 +38,8 @@ Rectangle {
                 readonly property bool active: modelData.focused
                 readonly property bool occupied: modelData.toplevels.values.length > 0
 
-                Layout.preferredWidth: active ? 26 : 20
-                Layout.preferredHeight: 20
+                Layout.preferredWidth: active ? 32 : 24
+                Layout.preferredHeight: 24
 
                 radius: 7
                 color: active ? root.activeColor : occupied ? root.occupiedColor : root.emptyColor
