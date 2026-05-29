@@ -1,28 +1,99 @@
-// Bar.qml
 import Quickshell
+import Quickshell.Hyprland
+import QtQuick
 
-Scope {
+import "Widgets"
 
-  Variants {
+Variants {
     model: Quickshell.screens
 
     PanelWindow {
-      required property var modelData
-      screen: modelData
+        required property var modelData
+        screen: modelData
 
-      anchors {
-        top: true
-        left: true
-        right: true
-      }
+        property bool commandMode: false
 
-      implicitHeight: 30
+        anchors {
+            top: true
+            left: true
+            right: true
+        }
 
-      ClockWidget {
-        anchors.centerIn: parent
+        implicitHeight: 36
+        color: "#1e1e2e"
 
-        // no more time binding
-      }
+        Clock {
+            anchors.centerIn: parent
+        }
+
+        //     Unlock {
+        //         anchors {
+        //             left: parent.left
+        //             verticalCenter: parent.verticalCenter
+        //             leftMargin: 10
+        //         }
+        //
+        //         text: "Unlock"
+        //         backgroundColor: "#a6e3a1"
+        //         textColor: "#1e1e2e"
+        //     }
+        //
+        //     // Rectangle {
+        //     //   anchors.fill: parent
+        //     //   color: bar.commandMode ? "#444444" : "#222222"
+        //     //
+        //     //   Text {
+        //     //     anchors.centerIn: parent
+        //     //     color: "white"
+        //     //     text: bar.commandMode ? "Press a command key..." : "My bar"
+        //     //   }
+        //     // }
+        // }
+        //
+        // GlobalShortcut {
+        //     name: "bar-enter-command-mode"
+        //
+        //     onPressed: {
+        //         bar.commandMode = true;
+        //         console.log("Command mode entered");
+        //     }
+        // }
+        //
+        // GlobalShortcut {
+        //     name: "bar-command-a"
+        //
+        //     onPressed: {
+        //         console.log("Received A");
+        //         bar.commandMode = false;
+        //         Hyprland.dispatch("submap reset");
+        //     }
+        // }
+        //
+        // GlobalShortcut {
+        //     name: "bar-command-b"
+        //
+        //     onPressed: {
+        //         console.log("Received B");
+        //         bar.commandMode = false;
+        //         Hyprland.dispatch("submap reset");
+        //     }
+        // }
+        //
+        // GlobalShortcut {
+        //     name: "bar-command-cancel"
+        //
+        //     onPressed: {
+        //         console.log("Command mode cancelled");
+        //         bar.commandMode = false;
+        //         Hyprland.dispatch("submap reset");
+        //     }
+        // }
+        //
+        // GlobalShortcut {
+        //     name: "bar-enter-command-mode"
+        //
+        //     onPressed: {
+        //         bar.commandMode = true;
+        //     }
     }
-  }
 }
