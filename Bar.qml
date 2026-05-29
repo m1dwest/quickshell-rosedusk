@@ -23,22 +23,17 @@ Variants {
         implicitHeight: 36
         color: "#1e1e2e"
 
-        RowLayout {
-            anchors.fill: parent
-            anchors.leftMargin: 8
-            anchors.rightMargin: 8
-            spacing: 8
+        Workspaces {}
 
-            Workspaces {}
+        Clock {
+            anchors.centerIn: parent
+        }
+        Item {
+            Layout.fillWidth: true
+        }
 
-            Clock {
-                anchors.centerIn: parent
-            }
-            Item {
-                Layout.fillWidth: true
-            }
-
-            Battery {}
+        Battery {
+            anchors.right: parent.right
         }
 
         //     Unlock {
