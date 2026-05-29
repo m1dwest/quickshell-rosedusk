@@ -22,6 +22,8 @@ Variants {
         implicitHeight: 36
         color: "#1e1e2e"
 
+        Workspaces {}
+
         Clock {
             anchors.centerIn: parent
         }
