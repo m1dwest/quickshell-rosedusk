@@ -3,8 +3,6 @@ import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
 
-import "Widgets"
-
 Variants {
     model: Quickshell.screens
 
@@ -32,8 +30,13 @@ Variants {
             Layout.fillWidth: true
         }
 
-        Battery {
+        RowLayout {
             anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 8
+
+            Keyboard {}
+            Battery {}
         }
 
         //     Unlock {
