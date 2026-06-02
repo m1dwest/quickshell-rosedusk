@@ -6,25 +6,32 @@ import Quickshell.Hyprland
 
 import qs.Themes
 
-Rectangle {
+Item {
     id: root
 
-    readonly property color occupiedColor: "#92707b"
     readonly property color activeColor: Default.accent
-    readonly property color emptyColor: "#4a3e45"
+    readonly property color occupiedColor: "#92707b"
+    readonly property color emptyColor: "transparent"
     readonly property color textColor: "#f5e8eb"
 
-    implicitWidth: row.implicitWidth + 12
-    implicitHeight: 32
+    property int leftPadding: 6
+    property int rightPadding: 6
+    property int topPadding: 0
+    property int bottomPadding: 0
 
-    radius: 10
-    color: "#332b30"
+    implicitWidth: row.implicitWidth + leftPadding + rightPadding
+    implicitHeight: 24
 
     RowLayout {
         id: row
 
-        anchors.centerIn: parent
-        spacing: 5
+        anchors.fill: parent
+        anchors.leftMargin: root.leftPadding
+        anchors.rightMargin: root.rightPadding
+        anchors.topMargin: root.topPadding
+        anchors.bottomMargin: root.bottomPadding
+
+        spacing: 6
 
         Repeater {
             model: Hyprland.workspaces
@@ -35,14 +42,20 @@ Rectangle {
                 required property HyprlandWorkspace modelData
 
                 readonly property int workspaceId: modelData.id
-                readonly property bool active: modelData.focused
+                readonly property bool active: Hyprland.focusedWorkspace?.id === modelData.id
+
                 readonly property bool occupied: modelData.toplevels.values.length > 0
 
-                Layout.preferredWidth: active ? 32 : 24
-                Layout.preferredHeight: 24
+                // Layout.preferredWidth: active ? 36 : 20
+                // Layout.preferredHeight: active ? 30 : 20
+                Layout.preferredWidth: 36
+                Layout.preferredHeight: 30
+                // Layout.fillHeight: true
 
-                radius: 7
-                color: active ? root.activeColor : occupied ? root.occupiedColor : root.emptyColor
+                // color: active ? root.activeColor : occupied ? root.occupiedColor : root.emptyColor
+                color: active ? root.activeColor : root.emptyColor
+
+                // radius: height / 2
 
                 Behavior on Layout.preferredWidth {
                     NumberAnimation {

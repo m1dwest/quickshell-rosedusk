@@ -3,14 +3,23 @@ import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
 
+import qs.Themes
+
 Variants {
     model: Quickshell.screens
 
     PanelWindow {
+        id: root
+
         required property var modelData
         screen: modelData
 
         property bool commandMode: false
+        property int barHeight: 32
+        property int underlineHeight: 4
+
+        implicitHeight: barHeight + underlineHeight
+        color: "#1e1e2e"
 
         anchors {
             top: true
@@ -18,25 +27,42 @@ Variants {
             right: true
         }
 
-        implicitHeight: 36
-        color: "#1e1e2e"
-
-        Workspaces {}
-
-        Clock {
-            anchors.centerIn: parent
-        }
         Item {
-            Layout.fillWidth: true
-        }
+            anchors.fill: parent
 
-        RowLayout {
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            spacing: 8
+            RowLayout {
+                id: row
 
-            Keyboard {}
-            Battery {}
+                anchors.right: parent.right
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+
+                spacing: 8
+
+                Workspaces {
+                    Layout.fillHeight: true
+                }
+
+                Clock {
+                    anchors.centerIn: parent
+                }
+                Item {
+                    Layout.fillWidth: true
+                }
+                Keyboard {}
+                Battery {}
+            }
+
+            // Rectangle {
+            //     id: underline
+            //
+            //     color: Default.accent
+            //     height: root.underlineHeight
+            //
+            //     anchors.left: parent.left
+            //     anchors.right: parent.right
+            //     anchors.bottom: parent.bottom
+            // }
         }
 
         //     Unlock {
