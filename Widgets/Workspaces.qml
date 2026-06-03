@@ -42,6 +42,7 @@ Item {
                 required property HyprlandWorkspace modelData
 
                 readonly property int workspaceId: modelData.id
+                readonly property string workspaceName: modelData.name
                 readonly property bool active: Hyprland.focusedWorkspace?.id === modelData.id
 
                 readonly property bool occupied: modelData.toplevels.values.length > 0
@@ -53,7 +54,8 @@ Item {
                 // Layout.fillHeight: true
 
                 // color: active ? root.activeColor : occupied ? root.occupiedColor : root.emptyColor
-                color: active ? root.activeColor : root.emptyColor
+                // color: active ? root.activeColor : root.emptyColor
+                color: root.emptyColor
 
                 // radius: height / 2
 
@@ -66,9 +68,11 @@ Item {
                 Text {
                     anchors.centerIn: parent
 
-                    text: workspaceButton.workspaceId
+                    // text: workspaceButton.workspaceId
+                    text: active ? `[ ${workspaceButton.workspaceName} ]` : workspaceButton.workspaceId
                     color: root.textColor
-                    font.pixelSize: 12
+                    font.family: Default.mainFont.family
+                    font.pointSize: Default.mainFont.pointSize
                     font.bold: workspaceButton.active
                 }
 

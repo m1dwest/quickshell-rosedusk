@@ -15,7 +15,7 @@ Variants {
         screen: modelData
 
         property bool commandMode: false
-        property int barHeight: 32
+        property int barHeight: 24
         property int underlineHeight: 4
 
         implicitHeight: barHeight + underlineHeight
