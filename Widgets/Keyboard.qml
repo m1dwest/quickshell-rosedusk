@@ -2,16 +2,18 @@ import QtQuick
 import Quickshell.Io
 import Quickshell.Hyprland
 
+import qs.Themes
+
 Rectangle {
     id: root
 
     property string layout: "--"
 
     implicitWidth: label.implicitWidth + 16
-    implicitHeight: 30
+    implicitHeight: 20
 
-    radius: 10
-    color: mouseArea.containsMouse ? "#4a3e45" : "#332b30"
+    radius: 2
+    color: mouseArea.containsMouse ? Socrates.activeDarker : Socrates.active
 
     function shortLayout(name) {
         if (name.startsWith("English"))

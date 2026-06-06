@@ -15,11 +15,11 @@ Variants {
         screen: modelData
 
         property bool commandMode: false
-        property int barHeight: 24
-        property int underlineHeight: 4
+        property int barHeight: 30
+        property int underlineHeight: 0
 
         implicitHeight: barHeight + underlineHeight
-        color: "#1e1e2e"
+        color: Socrates.background
 
         anchors {
             top: true
@@ -39,6 +39,10 @@ Variants {
 
                 spacing: 8
 
+                Item {
+                    implicitWidth: 2
+                }
+
                 Workspaces {
                     Layout.fillHeight: true
                 }
@@ -51,6 +55,9 @@ Variants {
                 }
                 Keyboard {}
                 Battery {}
+                Item {
+                    implicitWidth: 0
+                }
             }
 
             // Rectangle {

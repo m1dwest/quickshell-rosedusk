@@ -9,18 +9,17 @@ import qs.Themes
 Item {
     id: root
 
-    readonly property color activeColor: Default.accent
-    readonly property color occupiedColor: "#92707b"
+    readonly property color activeColor: Socrates.active
+    readonly property color occupiedColor: Socrates.inactive
     readonly property color emptyColor: "transparent"
-    readonly property color textColor: "#f5e8eb"
+    readonly property color textColor: Socrates.inactiveLighter
 
-    property int leftPadding: 6
-    property int rightPadding: 6
+    property int leftPadding: 0
+    property int rightPadding: 0
     property int topPadding: 0
     property int bottomPadding: 0
 
     implicitWidth: row.implicitWidth + leftPadding + rightPadding
-    implicitHeight: 24
 
     RowLayout {
         id: row
@@ -47,17 +46,14 @@ Item {
 
                 readonly property bool occupied: modelData.toplevels.values.length > 0
 
-                // Layout.preferredWidth: active ? 36 : 20
-                // Layout.preferredHeight: active ? 30 : 20
-                Layout.preferredWidth: 36
-                Layout.preferredHeight: 30
-                // Layout.fillHeight: true
+                Layout.preferredWidth: active ? 38 : 20
+                Layout.preferredHeight: 20
 
-                // color: active ? root.activeColor : occupied ? root.occupiedColor : root.emptyColor
+                color: active ? root.activeColor : occupied ? root.occupiedColor : root.emptyColor
                 // color: active ? root.activeColor : root.emptyColor
-                color: root.emptyColor
+                // color: root.emptyColor
 
-                // radius: height / 2
+                radius: 2
 
                 Behavior on Layout.preferredWidth {
                     NumberAnimation {
@@ -68,11 +64,11 @@ Item {
                 Text {
                     anchors.centerIn: parent
 
-                    // text: workspaceButton.workspaceId
-                    text: active ? `[ ${workspaceButton.workspaceName} ]` : workspaceButton.workspaceId
+                    text: workspaceButton.workspaceId
+                    // text: active ? `[ ${workspaceButton.workspaceName} ]` : workspaceButton.workspaceId
                     color: root.textColor
-                    font.family: Default.mainFont.family
-                    font.pointSize: Default.mainFont.pointSize
+                    font.family: Socrates.mainFont.family
+                    font.pointSize: 8
                     font.bold: workspaceButton.active
                 }
 

@@ -1,6 +1,8 @@
 import QtQuick
 import Quickshell.Services.UPower
 
+import qs.Themes
+
 Rectangle {
     id: root
 
@@ -10,10 +12,10 @@ Rectangle {
     visible: battery.ready && battery.isLaptopBattery
 
     implicitWidth: label.implicitWidth + 16
-    implicitHeight: 30
+    implicitHeight: 20
 
-    radius: 10
-    color: "#332b30"
+    radius: 2
+    color: Socrates.active
 
     Text {
         id: label
