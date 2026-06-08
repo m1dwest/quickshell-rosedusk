@@ -12,7 +12,7 @@ Item {
     readonly property color activeColor: Socrates.active
     readonly property color occupiedColor: Socrates.inactive
     readonly property color emptyColor: "transparent"
-    readonly property color textColor: Socrates.inactiveLighter
+    readonly property color textColor: Socrates.text
 
     property int leftPadding: 0
     property int rightPadding: 0

@@ -4,13 +4,17 @@ import qs.Themes
 import "../Services"
 
 Rectangle {
-    readonly property color occupiedColor: Socrates.active
+    id: root
+
+    readonly property color backgroundColor: Socrates.active
+    readonly property color timeTextColor: "#f6e9ee"
+    readonly property color timeDateColor: "#bdaeb5"
 
     width: 200
     height: 20
     radius: 2
 
-    color: occupiedColor
+    color: backgroundColor
 
     Row {
         anchors.centerIn: parent
@@ -18,7 +22,7 @@ Rectangle {
 
         Text {
             text: Time.time
-            color: "#f6e9ee"
+            color: root.timeTextColor
             font.pixelSize: 15
             font.family: Default.mainFont.family
             font.bold: true
@@ -26,7 +30,7 @@ Rectangle {
 
         Text {
             text: Time.date
-            color: "#bdaeb5"
+            color: root.timeDateColor
             font.pixelSize: 15
             font.family: Default.mainFont.family
             font.bold: true
